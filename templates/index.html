@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>MOI UNVERSITY PUBLICATION</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,900,700">
+{% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+		<link rel="stylesheet" id="type-stylesheet" href="{% static 'css/goliath.css' %}">
+		<link rel="stylesheet" href="{% static 'css/goliath-tablet.css' %}">
+		<link rel="stylesheet" href="{% static 'css/goliath-phone.css' %}">
+		<link rel="stylesheet" href="{% static 'css/demo.css' %}">
+		<link rel="stylesheet" href="{% static 'demo/colorpicker/css/bootstrap-colorpicker.min.css' %}">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:900,100,300,400">
+		<script src="{% static 'js/modernizr-2.6.2-respond-1.1.0.min.js' %}"></script>
+	</head>
+
+	<body class="preload">
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=233476193673408";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+		<script type="text/javascript">
+			var demo_base_url = '';
+		</script>
+
+		<div id="particles"></div>
+
+		<!-- Trending -->
+		<div class="container trending">
+			<div class="title-default">
+				<a href="#" class="active">Trending</a>
+			</div>
+			<div class="controls">
+				<div>
+					<a href="#" id="ticker-prev"><i class="fa fa-caret-up"></i></a>
+					<a href="#" id="ticker-next"><i class="fa fa-caret-down"></i></a>
+					<a href="#" class="pause"><i class="fa fa-pause"></i></a>
+				</div>
+			</div>
+			<div class="items-wrapper">
+				<ul id="newsticker" class="items newsticker cycle-slideshow"
+					data-index="1"
+	                data-cycle-slides="> li"
+	                data-cycle-auto-height="calc"
+	                data-cycle-paused="false"
+	                data-cycle-speed="500"
+	                data-cycle-next="#ticker-next"
+	                data-cycle-prev="#ticker-prev"
+	                data-cycle-fx="scrollVert"
+	                data-cycle-log="false"
+	                data-cycle-pause-on-hover="true"
+	                data-cycle-timeout="2000">
+                    {% for marque in marque%}
+					<li class="item hot">
+						<a href="{{ marque.get_absolute_url }}"><i class="tag-default">Hot</i>{{ marque.title }}</a>
+						<span class="legend-default"><i class="fa fa-clock-o"></i>{{ marque.pub_date }}</span>
+					</li>
+				{% endfor %}
+				</ul>
+			</div>
+
+			<div class="social">
+				<a href="#"><i class="fa fa-twitter-square"></i></a>
+				<a href="#"><i class="fa fa-facebook-square"></i></a>
+				<a href="#"><i class="fa fa-youtube-square"></i></a>
+				<a href="#"><i class="fa fa-google-plus-square"></i></a>
+				<a href="#"><i class="fa fa-pinterest-square"></i></a>
+			</div>
+		</div>
+
+		<!-- Header -->
+		<header class="container header">
+			<div class="logo-image">
+				<a href="/"></a>
+			</div>
+			<div class="banner-728x90">
+				<a href=""><img alt="" src="{% static 'images/banner-728x90.png' %}"></a>
+			</div>
+		</header>
+
+		<!-- Menu responsive -->
+		<div class="navbar-wrapper navbar-wrapper-responsive">
+			<div class="navbar navbar-default menu">
+				<div class="container">
+					<ul class="nav">
+						<li class="active"><a href="/">Home</a></li>
+						<li class="dropdown bars">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></a>
+							<div class="dropdown-menu full-width">
+								<ul>
+									<li><a href="goliath-homepage.html">Home</a></li>
+									<li><a href="goliath-blog-1.html">Featured</a></li>
+									<li><a href="goliath-blog-1.html">Stories</a></li>
+									<li><a href="goliath-blog-1.html">Kulikoni</a></li>
+											</ul>
+							</div>
+						</li>
+                        
+						<li class="dropdown search">
+				<form class="search" method="get" action="/search/">
+							<input type="text" class="form-control" name="q" placeholder="Search here">
+							</form>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- Menu -->
+		<div class="navbar-wrapper menu-primary" data-spy="affix" data-offset-top="191">
+			<div class="navbar navbar-default menu">
+				<div class="container">
+					<ul class="nav">
+						<li class="active"><a href="goliath-homepage.html">Home</a></li>
+						<li class="dropdown">
+							<a href="goliath-blog-1.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Featured</a>
+
+							<div class="dropdown-menu dropdown-category-posts full-width">
+
+								<div class="sorting">
+									<div class="label">
+										Showing
+									</div>
+									<div class="tags">
+										<a href="#cats_all" class="tag-1 active"><span>All recent articles</span></a>
+										<a href="#cats_technology" class="tag-1"><span>Technology</span></a>
+										<a href="#cats_travel" class="tag-1"><span>Travel</span></a>
+										<a href="#cats_fitness" class="tag-1"><span>Fitness</span></a>
+										<a href="#cats_sports" class="tag-1"><span>Sports</span></a>
+									</div>
+								</div>
+								<div class="items" id="cats_all">
+                                    {% for most_recent in most_recent %}
+
+									<div class="item big" style="background-image: url(images/{{MEDIA_URL}}{{ most_recent.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{most_recent.get_absolute_url}}">{{most_recent.title}}</a></h2>
+												<p><i class="tag-default">{{most_recent.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{most_recent.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{most_recent.title}}
+													<a href="{most_recent.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+                                    
+                                    {% for other_recent in other_recent %}
+
+									<div class="item small" style="background-image: url(images/{{MEDIA_URL}}{{ other_recent.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{other_recent.get_absolute_url}}">{{other_recent.title}}</a></h2>
+												<p><i class="tag-default">{{other_recent.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{other_recent.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{other_recent.title}}
+													<a href="{other_recent.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+								
+
+								</div>
+
+
+								<div class="items" id="cats_technology">
+
+									 {% for x in x %}
+
+									<div class="item big" style="background-image: url(images/{{MEDIA_URL}}{{ x.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{x.get_absolute_url}}">{{x.title}}</a></h2>
+												<p><i class="tag-default">{{x.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{x.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{x.title}}
+													<a href="{x.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+									 {% for y in y %}
+
+									<div class="item small" style="background-image: url(images/{{MEDIA_URL}}{{ y.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{y.get_absolute_url}}">{{y.title}}</a></h2>
+												<p><i class="tag-default">{{y.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{y.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{y.title}}
+													<a href="{y.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+								</div>
+
+
+								<div class="items" id="cats_travel">
+
+									 {% for a in a %}
+
+									<div class="item big" style="background-image: url(images/{{MEDIA_URL}}{{ a.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{a.get_absolute_url}}">{{a.title}}</a></h2>
+												<p><i class="tag-default">{{a.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{a.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{a.title}}
+													<a href="{a.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+									 {% for b in b %}
+
+									<div class="item small" style="background-image: url(images/{{MEDIA_URL}}{{ b.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{b.get_absolute_url}}">{{b.title}}</a></h2>
+												<p><i class="tag-default">{{b.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{b.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{b.title}}
+													<a href="{b.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+
+								</div>
+
+
+								<div class="items" id="cats_fitness">
+
+									{% for c in c %}
+
+									<div class="item big" style="background-image: url(images/{{MEDIA_URL}}{{ c.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{c.get_absolute_url}}">{{c.title}}</a></h2>
+												<p><i class="tag-default">{{c.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{c.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{c.title}}
+													<a href="{c.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+									 {% for d in d %}
+
+									<div class="item small" style="background-image: url(images/{{MEDIA_URL}}{{ d.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{d.get_absolute_url}}">{{d.title}}</a></h2>
+												<p><i class="tag-default">{{d.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{d.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{d.title}}
+													<a href="{d.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+
+								</div>
+
+
+								<div class="items" id="cats_sports">
+
+									{% for e in e %}
+
+									<div class="item big" style="background-image: url(images/{{MEDIA_URL}}{{ e.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{e.get_absolute_url}}">{{e.title}}</a></h2>
+												<p><i class="tag-default">{{e.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{e.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{e.title}}
+													<a href="{e.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+									 {% for f in f %}
+
+									<div class="item small" style="background-image: url(images/{{MEDIA_URL}}{{ f.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{f.get_absolute_url}}">{{f.title}}</a></h2>
+												<p><i class="tag-default">{{f.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{f.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{f.title}}
+													<a href="{f.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+
+								</div>
+
+
+							</div>
+
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Hot</a>
+
+							<div class="dropdown-menu full-width">
+
+								<ul>
+									<li><a href="goliath-post-2.html">Campus</a></li>
+									<li><a href="goliath-post-1.html">Politics</a></li>
+									<li><a href="goliath-blog-1.html">Girls</a></li>
+									<li><a href="goliath-blog-2.html">Write For Us</a></li>
+									<li><a href="goliath-photo-gallery.html">Alumni Center</a></li>
+								</ul>
+
+								<div class="items">
+
+										{% for g in g %}
+
+									<div class="item big" style="background-image: url(images/{{MEDIA_URL}}{{ g.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{g.get_absolute_url}}">{{g.title}}</a></h2>
+												<p><i class="tag-default">{{g.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{g.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{g.title}}
+													<a href="{g.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+									 {% for h in h %}
+
+									<div class="item small" style="background-image: url(images/{{MEDIA_URL}}{{ h.image1 }});">
+										<div class="overlay">
+											<div class="title">
+												
+												<h2><a href="{{h.get_absolute_url}}">{{h.title}}</a></h2>
+												<p><i class="tag-default">{{h.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{h.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+												<div class="intro">
+													{{h.title}}
+													<a href="{f.get_absolute_url}" class="more-link">Read more</a>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+
+
+								</div>
+
+							</div>
+
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">News</a>
+
+							<div class="dropdown-menu full-width">
+
+								<div class="post-block-1">
+
+									<div class="items">
+                                        {% for news in news %}
+
+										<div class="post-item">
+											<div class="image">
+												<a href="{{news.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ news.image1 }}"></a>
+											</div>
+											<div class="title">
+												<h2><a href="goliath-post-1.html"> {{news.title}}</a></h2>
+												<p><i class="tag-default">{{news.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{news.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+											</div>
+											<div class="post-intro">
+												{{news.body}}
+											</div>
+										</div>
+{% endfor %}
+									</div>
+
+								</div>
+
+								<button type="button" class="btn btn-default center-block"><span>{{count_more_stories}}</span></button>
+
+							</div>
+
+						</li>
+                        
+						
+
+						<li class="dropdown search">
+							<form class="search" method="get" action="/search/">
+							<input type="text" name="q" class="form-control" placeholder="Search here">
+							</form>
+							<a href="#" class="dropdown-toggle disabled" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-search"></i></a>
+						</li>
+
+						<li class="menu-spacer"></li>
+						<li class="dropdown new-stories new">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><s>{{new_stories}}</s><span>new<br>stories</span></a>
+
+							<div class="dropdown-menu full-width">
+
+								<div class="post-block-1">
+
+									<div class="items">
+{% for newest in newest %}
+										<div class="post-item">
+											<div class="image">
+												<a href="{{newest.get_get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ newest.image1 }}"></a>
+											</div>
+											<div class="title">
+												<h2><a href="{{newest.get_absolute_url}}"></a></h2>
+												<p><i class="tag-default">{{newest.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{newest.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+											</div>
+											<div class="post-intro">
+												{{newest.body}}
+											</div>
+										</div>
+{% endfor %}
+										
+									</div>
+
+								</div>
+
+								<button type="button" class="btn btn-default center-block"><span>{{count_today_unread}} more new stories</span></button>
+
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mosaic -->
+		<div class="container mosaic">
+{% for item_big in item_big %}
+
+			<div class="item big" style="background-repeat: no-repeat;background-size: 100% 100%;background-image: url(images/{{MEDIA_URL}}{{ item_big.image1 }});">
+				<div class="overlay">
+					<div class="title">
+						<h2><a href="{{ item_big.get_absolute_url }}">{{ item_big.title }}</a></h2>
+						<p><i class="tag-default">{{ item_big.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ item_big.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+						<div class="intro">
+ {% if entry.excerpt_html %}
+                  {{ entry.excerpt_html|safe }}
+                {% else %}
+                  {{ entry.body_html|truncatewords_html:"50"|safe }}
+                {% endif %}
+                            <a href="{{ item_big.get_absolute_url }}" class="more-link">Read more</a>
+						</div>
+					</div>
+				</div>
+			</div>
+{% endfor %}
+			
+{% for item_small in item_small %}
+			<div class="item small" style="background-repeat: no-repeat;background-size: 100% 100%;background-image: url(images/{{MEDIA_URL}}{{ item_small.image1 }});">
+				<div class="overlay">
+					<div class="title">
+						<h2><a href="{{ item_small.get_absolute_url }}">{{ item_small.title }}</a></h2>
+						<p><i class="tag-default">{{ item_small.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ item_small.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+						<div class="intro">
+{% if entry.excerpt_html %}
+                  {{ entry.excerpt_html|safe }}
+                {% else %}
+                  {{ entry.body_html|truncatewords_html:"50"|safe }}
+                {% endif %}
+                            <a href="{{ item_small.get_absolute_url }}l" class="more-link">Read more</a>
+						</div>
+					</div>
+				</div>
+			</div>
+{% endfor %}
+			
+			<button type="button" class="btn btn-default center-block"><span>Load more stories</span></button>
+
+		</div>
+
+		<!-- Slider tabs -->
+		<div class="container slider-tabs">
+
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="0">
+
+				<div class="title-default">
+					<a href="#" class="active">Featured</a>
+				</div>
+
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				</ol>
+
+				<a class="carousel-control left" href="#carousel-example-generic" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+				<a class="carousel-control right" href="#carousel-example-generic" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+
+				<div class="carousel-inner items">
+
+					<div class="item active">
+{% for this_week_featured in this_week_featured %}
+						<div class="post-item" data-overlay="1" data-overlay-excerpt="{{this_week_featured.title}}" data-overlay-url="{{this_week_featured.get_absolute_url}}">
+							<div class="stars">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star-o"></i>
+							</div>
+							<a href="{{this_week_featured.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ this_week_featured.image1 }}" height="200" width="200"></a>
+							<h2><a href="goliath-post-1.html">{{ this_week_featured.title}}</a></h2>
+							<p><i class="tag-default">{{this_week_featured.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{this_week_featured.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+
+						</div>
+
+					
+{% endfor %}
+						
+
+					
+
+					</div>
+
+					<div class="item">
+{% for featured_last_week in featured_last_week %}
+						<div class="post-item" data-overlay="1" data-overlay-excerpt="{{featured_last_week.title}}" data-overlay-url="{{ featured_last_week.get_absolute_url}}">
+							<div class="stars">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star-o"></i>
+							</div>
+							<a href="{{ featured_last_week.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ featured_last_week.image1 }}" height="200" width="200"></a>
+							<h2><a href="goliath-post-1.html">{{ featured_last_week.title }}</a></h2>
+							<p><i class="tag-default">{{ featured_last_week.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ featured_last_week.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+
+						</div>
+{% endfor %}
+					
+
+					</div>
+
+				<div class="item">
+{% for featured_last_month in featured_last_month %}
+						<div class="post-item" data-overlay="1" data-overlay-excerpt="{{featured_last_month.title}}" data-overlay-url="{{ featured_last_month.get_absolute_url}}">
+							<div class="stars">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star-o"></i>
+							</div>
+							<a href="{{ featured_last_month.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ featured_last_month.image1 }}" height="200" width="200"></a>
+							<h2><a href="{{ featured_last_month.get_absolute_url}}">{{ featured_last_week.title }}</a></h2>
+							<p><i class="tag-default">{{ featured_last_month.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ featured_last_month.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+
+						</div>
+{% endfor %}
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- Homepage content -->
+		<div class="container homepage-content">
+
+			<div class="main-content-column-1">
+
+				<!-- Latest posts -->
+				<div class="post-block-1">
+
+					<div class="title-default">
+						<a href="#" class="active">Latest News</a>
+						<a href="#" class="view-all">View all</a>
+					</div>
+
+					<div class="items">
+
+						
+{% for all_stories in all_stories %}
+						
+
+					
+						<div class="post-item" data-overlay="1" data-overlay-excerpt="{{ all_stories.body}}" data-overlay-url="{{ all_stories.get_absolute_url}}">
+							<div class="image">
+								<a href="{{ all_stories.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ all_stories.image1 }}" height="119" width="120"></a>
+							</div>
+							<div class="title">
+								<h2><a href="goliath-post-1.html">{{all_stories.title}}/a></h2>
+								<p><i class="tag-default">{{all_stories.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{all_stories.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+							</div>
+							<div class="intro">
+								{{ all_stories.title}}
+							</div>
+						</div>
+{% endfor %}
+					</div>
+
+					<!-- Slider -->
+					<div class="slider">
+
+						<div class="items cycle-slideshow"
+							 data-cycle-swipe="true"
+			                 data-cycle-swipe-fx="scrollHorz"
+			                 data-index="1"
+			                 data-cycle-log="false"
+			                 data-cycle-fx="scrollHorz"
+			                 data-cycle-timeout="0"
+			                 data-cycle-speed="500"
+			                 data-cycle-pager="#pager"
+			                 data-cycle-auto-height="calc"
+			                 data-cycle-pager-active-class="active"
+			                 data-cycle-pager-template=""
+			                 data-cycle-slides="> .post-item"
+						>
+                            {% for sponserd in sponserd %}
+							<div class="post-item" data-overlay="1" data-overlay-excerpt="{{ sponserd.title}}" data-overlay-url="{{ sponserd.get_absolute_url}}">
+								<div class="image">
+									
+									<a href="{{ sponserd.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ sponserd.image1 }}" height="250" width="250"></a>
+								</div>
+								<div class="title">
+									<h2><a href="{{ sponserd.get_absolute_url}}">{{ sponserd.title }}</a></h2>
+									<p><i class="tag-default">{{ sponserd.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ sposerd.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+								</div>
+								<div class="intro">
+									{{ sponserd.title}}
+								</div>
+							</div>
+						{% endfor %}
+						</div>
+
+						<div class="thumbs" id="pager">
+                                                        {% for sponserd in sponserd %}
+
+							<a href="{{sponserd.get_absolute_url}}"><img alt="{{sponserd.title}}" src="images/{{MEDIA_URL}}{{ sponserd.image1 }}" height="55" width="55"></a>
+							{% endfor %}
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="banner-468x60">
+					<a href=""><img alt="" src="{% static 'images/banner-468x60.png' %}"></a>
+				</div>
+
+				<!-- Technology -->
+				<div class="post-block-2">
+
+					<div class="title-default">
+						<a href="#" class="active">Campus</a>
+						<a href="#" class="view-all">View all</a>
+					</div>
+
+					<div class="items">
+{% for campus in campus %}
+						<div class="post-item featured" data-overlay="1" data-overlay-excerpt="{{ campus.title}}" data-overlay-url="{{campus.get_absolute_url}}">
+							<div class="image">
+								
+								<a href="{{ campus.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ campus.image1 }}" height="250" width="300"></a>
+							</div>
+							<div class="title">
+								<h2><a href="goliath-post-1.html">{{campus.title}}</a></h2>
+								<p><i class="tag-default">{{ campus.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{campus.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+							</div>
+							<div class="intro">
+								{{campus.title}}
+							</div>
+						</div>
+
+					{% endfor %}
+                        
+                        {% for f_campus in f_campus %}
+                        <div class="post-item" data-overlay="1" data-overlay-excerpt="{{f_campus.title}}" data-overlay-url="{{f_campus.get_absolute_url}}">
+							<div class="image">
+								<a href="{{f_campus.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ f_campus.image1 }}" height="70" width="70"></a>
+							</div>
+							<div class="title">
+								<h2><a href="{{f_campus.get_absolute_url}}">{{f_campus.title}}</a></h2>
+								<p><i class="tag-default">{{f_campus.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{f_campus.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+							</div>
+						</div>
+						
+					{% endfor %}
+
+					</div>
+
+				</div>
+
+				<!-- Travel -->
+				<div class="post-block-2 last">
+
+					<div class="title-default">
+						<a href="#" class="active">Politics</a>
+						<a href="#" class="view-all">View all</a>
+					</div>
+
+					<div class="items">
+{% for politics in politics %}
+						<div class="post-item featured" data-overlay="1" data-overlay-excerpt="{{politics.title}}" data-overlay-url="goliath-post-1.html">
+							<div class="image">
+								<a href="{{politics.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ politics.image1 }}" height="250" width="300"></a>
+							</div>
+							<div class="title">
+								<h2><a href="{{politics.get_absolute_url}}">{{politics.title}}</a></h2>
+								<p><i class="tag-default">{{ politics.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{politics.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+							</div>
+							<div class="intro">
+								{{politics.title}}
+							</div>
+						</div>
+
+				{% endfor %}
+                        
+                         {% for f_politics in f_politics %}
+                        <div class="post-item" data-overlay="1" data-overlay-excerpt="{{f_politics.title}}" data-overlay-url="{{f_politics.get_absolute_url}}">
+							<div class="image">
+								<a href="{{f_politics.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ f_politics.image1 }}" height="70" width="70"></a>
+							</div>
+							<div class="title">
+								<h2><a href="{{f_politics.get_absolute_url}}">{{f_politics.title}}</a></h2>
+								<p><i class="tag-default">{{f_politics.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{f_politics.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+							</div>
+						</div>
+						
+					{% endfor %}
+
+					</div>
+
+				</div>
+
+				<div class="banner-468x60">
+					<a href=""><img alt="" src="{% static 'images/banner-468x60.png' %}"></a>
+				</div>
+
+				<!-- Fitness -->
+				<div class="post-block-3">
+
+					<div class="title-default">
+						<a href="#" class="active">Kulikoni</a>
+						<a href="#" class="view-all">View all</a>
+					</div>
+
+					<div class="items">
+{% for Kulikoni in Kulikoni %}
+						<div class="post-item" data-overlay="1" data-overlay-excerpt="{{Kulikoni.title}}" data-overlay-url="{{Kulikoni.get_absolute_url}}">
+							<div class="image">
+								<a href="{{Kulikoni.get_absolute_url}}"><img alt="" src="images/{{MEDIA_URL}}{{ Kulikoni.image1 }}"></a>
+							</div>
+							<div class="title">
+								<h2><a href="{{Kulikoni.get_absolute_url}}">{{Kulikoni.title}}</a></h2>
+								<p><i class="tag-default">{{Kulikoni.tags}}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{Kulikoni.pub_date}}<i class="fa fa-comments"></i>22</span></p>
+							</div>
+							<div class="intro">
+								{{Kulikoni.title}}
+							</div>
+						</div>
+{% endfor %}
+						
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- Sidebar -->
+			<div class="main-sidebar">
+
+				<div class="banner-300x250">
+					<a href=""><img alt="" src="{% static 'images/banner-300x250.png' %}"></a>
+				</div>
+
+				<!-- Tabs -->
+				<div class="widget-tabs switchable-tabs mobile">
+
+					<div class="title-default">
+						<a href="#" class="active">Trending</a>
+						<a href="#">Recent</a>
+						<a href="#">Comments</a>
+					</div>
+
+<div class="tabs-content">
+						<div class="items">
+
+					 {% for trending in trending %}
+							<div class="post-item" data-overlay="1" data-overlay-excerpt="{{ trending.title }}" data-overlay-url="{{ trending.get_absolute_url }}">
+								<div class="image">
+									
+									<a href="{{ trending.get_absolute_url }}"><img alt="" src="../images/{{MEDIA_URL}}{{ trending.image1 }}" height="50" width="50"></a>
+								</div>
+								<div class="title">
+									<h2><a href="{{ trending.get_absolute_url }}">{{ trending.title }}</a></h2>
+									<p><i class="tag-default">{{ trending.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ trending.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+								</div>
+							</div>
+
+					{% endfor %}
+						</div>
+
+
+						<div class="items">
+
+							    {% for recent in recent %}
+							<div class="post-item" data-overlay="1" data-overlay-excerpt="{{ recent.title }}" data-overlay-url="{{ recent.get_absolute_url }}">
+								<div class="image">
+									
+									<a href="{{ recent.get_absolute_url }}"><img alt="" src="images/{{MEDIA_URL}}{{ recent.image1 }}" height="50" width="50"></a>
+								</div>
+								<div class="title">
+									<h2><a href="{{ recent.get_absolute_url }}">{{ recent.title }}</a></h2>
+									<p><i class="tag-default">{{ recent.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ recent.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+								</div>
+							</div>
+{% endfor %}
+						</div>
+
+
+						<div class="items">
+                            {% for comments in comments %}
+							<div class="post-item" data-overlay="1" data-overlay-excerpt="{{comments.comment}}" data-overlay-url="">
+								<div class="image">
+                                    <a href="">{{comments.user_name}}</a>
+								</div>
+								<div class="title">
+									<h2><a href="">{{comments.comment}}</a></h2>
+									<p><i class="tag-default">Comments</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{comments.submit_date}}
+<!--                                        <i class="fa fa-comments"></i>22-->
+</span></p>
+								</div>
+							</div>
+
+							{% endfor %}
+
+						</div>
+
+					</div>
+
+				</div>
+<!--
+
+				 Latest reviews 
+				<div class="widget-tabs mobile">
+
+					<div class="title-default">
+						<a href="#" class="active">Whats Trending?</a>
+						<a href="#" class="view-all">View all</a>
+					</div>
+
+					<div class="items">
+
+					    {% for trending in trending %}
+							<div class="post-item" data-overlay="1" data-overlay-excerpt="{{ trending.title }}" data-overlay-url="{{ trending.get_absolute_url }}">
+								<div class="image">
+									
+									<a href="{{ trending.get_absolute_url }}"><img alt="" src="images/{{MEDIA_URL}}{{ trending.image1 }}" height="50" width="50"></a>
+								</div>
+								<div class="title">
+									<h2><a href="{{ trending.get_absolute_url }}">{{ trending.title }}</a></h2>
+									<p><i class="tag-default">{{ trending.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ trending.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+								</div>
+							</div>
+
+					{% endfor %}
+					</div>
+
+				</div>
+-->
+
+				<!-- Text widget -->
+				<div class="widget-text">
+					<div class="title-default">
+						<a href="#" class="active">LIKE US ON FACEBOOK</a>
+					</div>
+					<div class="content">
+						<div class="fb-page" data-href="https://www.facebook.com/Bensoh1.mburu/" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Bensoh1.mburu/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Bensoh1.mburu/">Bensoh mburu (officialpage)</a></blockquote></div>
+					</div>
+				</div>
+
+				<!-- Archive -->
+				<div class="widget-tabs">
+					<div class="title-default">
+						<a href="#" class="active">Twitter</a>
+						<a href="https://twitter.com/fabric" class="view-all">Go to page</a>
+					</div>
+					<div class="items archives">
+						<a class="twitter-timeline" href="https://twitter.com/fabric">Tweets by fabric</a>
+                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+					</div>
+				</div>
+
+				
+
+				<div class="banner-300x250">
+					<a href=""><img alt="" src="{% static 'images/banner-300x250.png' %}"></a>
+				</div>
+
+			</div>
+
+		</div>
+
+	
+		<div class="container banner-728x90">
+			<a href=""><img alt="" src="{% static 'images/banner-728x90.png' %}"></a>
+		</div>
+
+		<!-- Footer -->
+		<footer class="container footer">
+
+			<div class="widget about">
+				<div class="title-default">
+					<a href="#" class="active">About us</a>
+				</div>
+				<div class="text">
+					<p class="logo"><a href""><img alt="" src=""></a></p>
+					we are a news magazine etc etc
+				</div>
+			</div>
+
+			<div class="widget page-map">
+				<div class="title-default">
+					<a href="#" class="active">Page map</a>
+				</div>
+				<div class="items archives">
+					<table class="table">
+                        {% for cats in cats %}
+						<tr>
+							<td><a href="{{cats.get_absolute_url}}">{{cats.title}}</a></td>
+
+						</tr>
+                        {% endfor %}
+					
+					</table>
+				</div>
+			</div>
+
+			<div class="widget tags">
+				<div class="title-default">
+					<a href="#" class="active">Tag cloud</a>
+				</div>
+				<div class="items tag-cloud">
+                       {% for cats in cats %}
+					<a href="{{cats.get_absolute_url}}" class="tag-1"><span>{{cats.title}}</span><s></s></a>
+					                        {% endfor %}
+				</div>
+			</div>
+
+		</footer>
+
+		<!-- Copyright -->
+		<div class="container copyright">
+			<div class="left">
+				&copy; 2016   <a href="#">i254 consultants</a>
+			</div>
+			<div class="right">
+				<ul>
+					<li><a href="#">Contacts us</a></li>
+					<li><a href="#">Shortcodes</a></li>
+					<li><a href="#">Legal</a></li>
+					<li>
+						<a href="#"><i class="fa fa-twitter-square"></i></a>
+						<a href="#"><i class="fa fa-facebook-square"></i></a>
+						<a href="#"><i class="fa fa-youtube-square"></i></a>
+						<a href="#"><i class="fa fa-google-plus-square"></i></a>
+						<a href="#"><i class="fa fa-pinterest-square"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+		<script src="{% static 'js/jquery-1.11.1.js' %}"></script>
+		<script src="{% static 'js/bootstrap.js' %}"></script>
+		<script src="{% static 'js/bootstrap-hover-dropdown.js' %}"></script>
+		<script src="{% static 'js/jquery.particleground.js' %}"></script>
+		<script src="{% static 'js/jquery.cycle2.min.js' %}"></script>
+		<script src="{% static 'js/jquery.cycle2.scrollVert.js' %}"></script>
+		<script src="{% static 'js/jquery.cycle2.swipe.min.js' %}"></script>
+		<script src="{% static 'js/jquery.hoverintent.min.js' %}"></script>
+		<script src="{% static 'js/jquery.inview.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.core.min.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.effect.min.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.effect-size.min.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.effect-slide.min.js' %}"></script>
+		<script src="{% static 'js/goliath.js' %}"></script>
+		<script src="{% static 'demo/colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+		<script src="{% static 'js/demo.js' %}"></script>
+	</body>
+</html>
+        

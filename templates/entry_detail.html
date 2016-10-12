@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title></title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,900,700">
+		{% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+		<link rel="stylesheet" id="type-stylesheet" href="{% static 'css/goliath.css' %}">
+		<link rel="stylesheet" href="{% static 'css/goliath-tablet.css' %}">
+		<link rel="stylesheet" href="{% static 'css/goliath-phone.css' %}">
+		<link rel="stylesheet" href="{% static 'css/demo.css' %}">
+		<link rel="stylesheet" href="{% static 'demo/colorpicker/css/bootstrap-colorpicker.min.css' %}">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:900,100,300,400">
+		<script src="{% static 'js/modernizr-2.6.2-respond-1.1.0.min.js' %}"></script>
+	</head>
+	<body class="preload">
+		
+		<script type="text/javascript">
+			var demo_base_url = '';
+		</script>
+
+		<div id="particles"></div>
+
+		<!-- Trending -->
+		<div class="container trending">
+			<div class="title-default">
+				<a href="#" class="active">Trending</a>
+			</div>
+			<div class="controls">
+				<div>
+					<a href="#" id="ticker-prev"><i class="fa fa-caret-up"></i></a>
+					<a href="#" id="ticker-next"><i class="fa fa-caret-down"></i></a>
+					<a href="#" class="pause"><i class="fa fa-pause"></i></a>
+				</div>
+			</div>
+			<div class="items-wrapper">
+				<ul id="newsticker" class="items newsticker cycle-slideshow"
+					data-index="1"
+	                data-cycle-slides="> li"
+	                data-cycle-auto-height="calc"
+	                data-cycle-paused="false"
+	                data-cycle-speed="500"
+	                data-cycle-next="#ticker-next"
+	                data-cycle-prev="#ticker-prev"
+	                data-cycle-fx="scrollVert"
+	                data-cycle-log="false"
+	                data-cycle-pause-on-hover="true"
+	                data-cycle-timeout="2000">
+                    {% for marque in marque%}
+					<li class="item hot">
+						<a href="{{ marque.get_absolute_url }}"><i class="tag-default">Hot</i>{{ marque.title }}</a>
+						<span class="legend-default"><i class="fa fa-clock-o"></i>{{ marque.pub_date }}</span>
+					</li>
+				{% endfor %}
+				</ul>
+			</div>
+
+			<div class="social">
+				<a href="#"><i class="fa fa-twitter-square"></i></a>
+				<a href="#"><i class="fa fa-facebook-square"></i></a>
+				<a href="#"><i class="fa fa-youtube-square"></i></a>
+				<a href="#"><i class="fa fa-google-plus-square"></i></a>
+				<a href="#"><i class="fa fa-pinterest-square"></i></a>
+			</div>
+		</div>
+
+		
+		<!-- Header -->
+		<header class="container header">
+			<div class="logo-image">
+				<a href="goliath-homepage.html"><img alt="" src="img/logo-goliath-1.png"></a>
+			</div>
+			<div class="banner-728x90">
+				<a href="goliath-homepage.html"><img alt="" src="{% static 'images/banner-728x90.png' %}"></a>
+			</div>
+		</header>
+		
+		<!-- Menu responsive -->
+{#		<div class="navbar-wrapper navbar-wrapper-responsive">#}
+{#			<div class="navbar navbar-default menu">#}
+{#				<div class="container">#}
+{#					<ul class="nav">#}
+{#						<li class="active"><a href="goliath-homepage.html">Home</a></li>#}
+{#						<li class="dropdown bars">#}
+{#							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></a>#}
+{#							<div class="dropdown-menu full-width">#}
+{#								<ul>#}
+{#									<li><a href="goliath-homepage.html">Home</a></li>#}
+{#									<li><a href="goliath-blog-1.html">Featured</a></li>#}
+{#									<li><a href="goliath-blog-1.html">Reviews</a></li>#}
+{#									<li><a href="goliath-blog-1.html">Technology</a></li>#}
+{#									<li>#}
+{#										<a href="#">Templates</a>#}
+{#										<ul class="sub-menu">#}
+{#											<li><a href="goliath-post-2.html">Full width post</a></li>#}
+{#											<li><a href="goliath-post-1.html">Post with sidebar</a></li>#}
+{#											<li><a href="goliath-blog-1.html">Blog compact</a></li>#}
+{#											<li><a href="goliath-blog-2.html">Blog large</a></li>#}
+{#											<li><a href="goliath-photo-gallery.html">Photo gallery list</a></li>#}
+{#											<li><a href="goliath-photo-gallery-open.html">Photo gallery open</a></li>#}
+{#											<li>#}
+{#												<a href="#">Extras</a>#}
+{#												<ul class="sub-menu">#}
+{#													<li><a href="goliath-shortcodes.html">Shortcodes</a></li>#}
+{#													<li><a href="goliath-typography.html">Typography</a></li>#}
+{#													<li><a href="goliath-search-results-1.html">Search results</a></li>#}
+{#												</ul>#}
+{#											</li>#}
+{#										</ul>#}
+{#									</li>#}
+{#									<li><a href="goliath-photo-gallery.html">Gallery</a></li>#}
+{#								</ul>#}
+{#							</div>#}
+{#						</li>#}
+{#						<li class="dropdown new-stories new">#}
+{#							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><s>10</s><span>new<br>stories</span></a>#}
+{#							<div class="dropdown-menu full-width">#}
+{#								#}
+{#								<div class="post-block-1">#}
+{#								#}
+{#									<div class="items">#}
+{##}
+{#										<div class="post-item">#}
+{#											<div class="image">#}
+{#												<a href="goliath-post-1.html"><img alt="" src="img/photos/photo-16.jpg"></a>#}
+{#											</div>#}
+{#											<div class="title">#}
+{#												<h2><a href="goliath-post-1.html">Lorem ipsum dolor ipsum sitat con sectetur lorem adipiscing</a></h2>#}
+{#												<p><i class="tag-default">Technology</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2015<i class="fa fa-comments"></i>22</span></p>#}
+{#											</div>#}
+{#											<div class="post-intro">#}
+{#												Lorem ipsum dolor sit amet, conse tetur adipiscing elit. Donec fermentum pulvinar nislet. Lorem ipsum dolor sit amet, conse tetur adipiscing elit.#}
+{#											</div>#}
+{#										</div>#}
+{#										#}
+{#										<div class="post-item">#}
+{#											<div class="image">#}
+{#												<a href="goliath-post-1.html"><img alt="" src="img/photos/photo-16.jpg"></a>#}
+{#											</div>#}
+{#											<div class="title">#}
+{#												<h2><a href="goliath-post-1.html">Lorem ipsum dolor ipsum sitat con sectetur lorem adipiscing</a></h2>#}
+{#												<p><i class="tag-default">Technology</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2015<i class="fa fa-comments"></i>22</span></p>#}
+{#											</div>#}
+{#											<div class="post-intro">#}
+{#												Lorem ipsum dolor sit amet, conse tetur adipiscing elit. Donec fermentum pulvinar nislet. Lorem ipsum dolor sit amet, conse tetur adipiscing elit.#}
+{#											</div>#}
+{#										</div>#}
+{#										#}
+{#										<div class="post-item">#}
+{#											<div class="image">#}
+{#												<a href="goliath-post-1.html"><img alt="" src="img/photos/photo-16.jpg"></a>#}
+{#											</div>#}
+{#											<div class="title">#}
+{#												<h2><a href="goliath-post-1.html">Lorem ipsum dolor ipsum sitat con sectetur lorem adipiscing</a></h2>#}
+{#												<p><i class="tag-default">Technology</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2015<i class="fa fa-comments"></i>22</span></p>#}
+{#											</div>#}
+{#											<div class="post-intro">#}
+{#												Lorem ipsum dolor sit amet, conse tetur adipiscing elit. Donec fermentum pulvinar nislet. Lorem ipsum dolor sit amet, conse tetur adipiscing elit.#}
+{#											</div>#}
+{#										</div>#}
+{#										#}
+{#										<div class="post-item">#}
+{#											<div class="image">#}
+{#												<a href="goliath-post-1.html"><img alt="" src="img/photos/photo-16.jpg"></a>#}
+{#											</div>#}
+{#											<div class="title">#}
+{#												<h2><a href="goliath-post-1.html">Lorem ipsum dolor ipsum sitat con sectetur lorem adipiscing</a></h2>#}
+{#												<p><i class="tag-default">Technology</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2015<i class="fa fa-comments"></i>22</span></p>#}
+{#											</div>#}
+{#											<div class="post-intro">#}
+{#												Lorem ipsum dolor sit amet, conse tetur adipiscing elit. Donec fermentum pulvinar nislet. Lorem ipsum dolor sit amet, conse tetur adipiscing elit.#}
+{#											</div>#}
+{#										</div>#}
+{#										#}
+{#										<div class="post-item">#}
+{#											<div class="image">#}
+{#												<a href="goliath-post-1.html"><img alt="" src="img/photos/photo-16.jpg"></a>#}
+{#											</div>#}
+{#											<div class="title">#}
+{#												<h2><a href="goliath-post-1.html">Lorem ipsum dolor ipsum sitat con sectetur lorem adipiscing</a></h2>#}
+{#												<p><i class="tag-default">Technology</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2015<i class="fa fa-comments"></i>22</span></p>#}
+{#											</div>#}
+{#											<div class="post-intro">#}
+{#												Lorem ipsum dolor sit amet, conse tetur adipiscing elit. Donec fermentum pulvinar nislet. Lorem ipsum dolor sit amet, conse tetur adipiscing elit.#}
+{#											</div>#}
+{#										</div>#}
+{#										#}
+{#										<div class="post-item">#}
+{#											<div class="image">#}
+{#												<a href="goliath-post-1.html"><img alt="" src="img/photos/photo-16.jpg"></a>#}
+{#											</div>#}
+{#											<div class="title">#}
+{#												<h2><a href="goliath-post-1.html">Lorem ipsum dolor ipsum sitat con sectetur lorem adipiscing</a></h2>#}
+{#												<p><i class="tag-default">Technology</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2015<i class="fa fa-comments"></i>22</span></p>#}
+{#											</div>#}
+{#											<div class="post-intro">#}
+{#												Lorem ipsum dolor sit amet, conse tetur adipiscing elit. Donec fermentum pulvinar nislet. Lorem ipsum dolor sit amet, conse tetur adipiscing elit.#}
+{#											</div>#}
+{#										</div>#}
+{##}
+{#									</div>#}
+{#									#}
+{#								</div>#}
+{#								#}
+{#								<button type="button" class="btn btn-default center-block"><span>4 more new stories</span></button>#}
+{#					#}
+{#							</div>#}
+{#						</li>#}
+{#						#}
+{#						<li class="dropdown search">#}
+{#							<form class="search" method="get" >#}
+{#							<input type="text" class="form-control" placeholder="Search here">#}
+{#							</form>#}
+{#							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>#}
+{#						</li>#}
+{#						#}
+{#					</ul>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+
+		<!-- Menu -->
+		<div class="navbar-wrapper menu-primary" data-spy="affix" data-offset-top="191">
+			<div class="navbar navbar-default menu">
+				<div class="container">
+					<ul class="nav">
+						<li class="active"><a href="/">Home</a></li>
+
+
+						<li class="menu-spacer"></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+{#		<div class="post-1-navbar">#}
+{#			<ul class="nav">#}
+{#				<li><a href="#intro">Intro</a></li>#}
+{#				<li><a href="#overview">Overview</a></li>#}
+{#				<li><a href="#photo-gallery">Photo gallery</a></li>#}
+{#				<li><a href="#about-author">About author</a></li>#}
+{#				<li><a href="#comments">Comments</a></li>#}
+{#			</ul>#}
+{#		</div>#}
+		
+		<!-- Homepage content -->
+		<div class="container homepage-content">
+			
+			<div class="main-content-column-1">
+				
+				<!-- Post -->
+				<div class="post-1">
+					
+					<div class="image" style="background: url(../images/{{MEDIA_URL}}{{ object.image1 }}) center center no-repeat; width: 640px;">
+						<div>
+
+						</div>
+					</div>
+					
+					<div class="title">
+						<h2 id="intro"><a href="">{{ object.titke }}</a></h2>
+						<p><i class="tag-default">{{ object.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>
+                            {{ object.pub_date }}<i class="fa fa-user"></i><a href="#">{{ user.username }}</a><i class="fa fa-comments"></i>
+                        {% load comments %}
+{% get_comment_count for object as comment_count %}
+                                        {{ comment_count }}
+                        </span></p>
+						
+						<div class="tag-cloud tag-title">
+							<i class="fa fa-tags"></i>
+							<a href="#" class="tag-1"><span>{{ object.tags }}</span><s></s></a>
+
+						</div>
+						
+					</div>
+					<div class="post">
+<p>{{ object.body }}</p>
+
+
+
+						<div id="attachment_230" style="width: 998px" class="wp-caption aligncenter">
+                                <img class="wp-image-230 size-full" src="../images/{{MEDIA_URL}}{{ object.image2 }}"  width="988" height="680">
+                            <p class="wp-caption-text">{{ object.title }}</p>
+						</div>
+						
+					</div>
+				</div>
+				<!-- About author -->
+				<div class="about-author" id="about-author">
+					<div class="title-default">
+						<a href="#" class="active">About author</a>
+					</div>
+					<div class="about">
+						<img src="{% static 'images/default-user-profile.jpg' %}" height="100" width="100">
+						<h2>{{ user.username }}<span></span></h2>
+                        {% for bio in bio %}
+                            <p>{{ bio.bio }}</p>
+						<div class="social">
+							<a href="http://twitter.com{{ bio.social_twitter }}"><i class="fa fa-twitter-square"></i></a>
+							<a href="http://facebook.com/{{ bio.social_facebook }}"><i class="fa fa-facebook-square"></i></a>
+							<a href="http://youtuce.com/{{ bio.social_youtube }}"><i class="fa fa-youtube-square"></i></a>
+							<a href="http://googleplus.com/{{ bio.social_google }}"><i class="fa fa-google-plus-square"></i></a>
+							<a href="http://pintrest.com/{{ bio.social_pintrest }}"><i class="fa fa-pinterest-square"></i></a>
+						</div>
+					</div>
+                    {% endfor %}
+				</div>
+				
+				<!-- Comments -->
+				<div class="comments" id="comments">
+					<div class="title-default">
+						<a href="#" class="active">Comments</a>
+					</div>
+					
+					<ul>
+						<li>
+                              {% load comments %}
+{% load markup %}
+{% get_comment_list for object as comment_list %}
+{% for comment in comment_list %}
+							<div class="item">
+								<a href="#" class="image"><img src="{% static 'images/placeholder-comments-1.png' %}"></a>
+								<div class="comment">
+									<div class="info">
+
+										<h2><a href="">{{ comment.name }}</a></h2>
+										<span class="legend-default"><i class="fa fa-clock-o"></i>On {{ comment.submit_date|date:"F j, Y" }}</span>
+										<span class="nr">#1</span>
+
+									</div>
+									<p>
+
+{{ comment.comment|markdown:"safe" }}
+									</p>
+								</div>
+
+							</div>
+                            {% endfor %}
+						</li>
+						</ul>
+					
+					<div class="add-comment">
+							<p>
+{#								<input type="text" class="form-control" placeholder="Your name">#}
+{#								<input type="text" class="form-control" placeholder="E-mail address">#}
+{#								<input type="text" class="form-control" placeholder="Web address">#}
+                                {% render_comment_form for object %}
+{% load comments %}
+
+
+							</p>
+{#							<p>#}
+{#								<textarea class="form-control" placeholder="Your comment"></textarea>#}
+{#							</p>#}
+{#							<button type="button" class="btn btn-default"><span>Post comment</span></button>#}
+					</div>
+
+				</div>
+
+			</div>
+			
+			<!-- Sidebar -->
+			<div class="main-sidebar">
+
+				<!-- Tabs -->
+				<div class="widget-tabs switchable-tabs mobile">
+					
+					<div class="title-default">
+						<a href="#" class="active">Trending</a>
+						<a href="#">Recent</a>
+						<a href="#">Comments</a>
+					</div>
+						
+					<div class="tabs-content">
+						
+						<div class="items">
+
+							 {% for trending in trending %}
+							<div class="post-item" data-overlay="1" data-overlay-excerpt="{{ trending.title }}" data-overlay-url="{{ trending.get_absolute_url }}">
+								<div class="image">
+
+									<a href="{{ trending.get_absolute_url }}"><img alt="" src="images/{{MEDIA_URL}}{{ trending.image1 }}" height="50" width="50"></a>
+								</div>
+								<div class="title">
+									<h2><a href="{{ trending.get_absolute_url }}">{{ trending.title }}</a></h2>
+									<p><i class="tag-default">{{ trending.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ trending.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+								</div>
+							</div>
+
+					{% endfor %}
+						</div>
+					
+					
+						<div class="items">
+						
+							   {% for recent in recent %}
+							<div class="post-item" data-overlay="1" data-overlay-excerpt="{{ recent.title }}" data-overlay-url="{{ recent.get_absolute_url }}">
+								<div class="image">
+
+									<a href="{{ recent.get_absolute_url }}"><img alt="" src="../images/{{MEDIA_URL}}{{ recent.image1 }}" height="50" width="50"></a>
+								</div>
+								<div class="title">
+									<h2><a href="{{ recent.get_absolute_url }}">{{ recent.title }}</a></h2>
+									<p><i class="tag-default">{{ recent.tags }}</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{ recent.pub_date }}<i class="fa fa-comments"></i>22</span></p>
+								</div>
+							</div>
+{% endfor %}
+						</div>
+						
+						
+						<div class="items">
+
+							{% for comments in comments %}
+							<div class="post-item" data-overlay="1" data-overlay-excerpt="{{comments.comment}}" data-overlay-url="">
+								<div class="image">
+                                    <a href="">{{comments.user_name}}</a>
+								</div>
+								<div class="title">
+									<h2><a href="">{{comments.comment}}</a></h2>
+									<p><i class="tag-default">Comments</i><span class="legend-default"><i class="fa fa-clock-o"></i>{{comments.submit_date}}
+<!--                                        <i class="fa fa-comments"></i>22-->
+</span></p>
+								</div>
+							</div>
+
+							{% endfor %}
+
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				<div class="banner-300x250">
+					<a href="#"><img src="{% static 'images/banner-300x250.png' %}"></a>
+				</div>
+				
+{#				<!-- Latest reviews -->#}
+{#				<div class="widget-tabs">#}
+{#					#}
+{#					<div class="title-default">#}
+{#						<a href="#" class="active">Latest reviews</a>#}
+{#						<a href="#" class="view-all">View all</a>#}
+{#					</div>#}
+{#					#}
+{#					<div class="items">#}
+{##}
+{#						<div class="post-item" data-overlay="1" data-overlay-excerpt="Lorem ipsum dolor sit amet, consectetu r adipiscing elit. Donec velit mi, venenatis eget lacus luctus, mollis aliquet lorem. Aenean sagittis enim et felis pharetra placerat. Curabitur viverra mauris convallis sapien fermentum congue eget libero interdum." data-overlay-url="goliath-post-1.html">#}
+{#							<div class="image">#}
+{#								<div class="stars">#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star-o"></i>#}
+{#									<i class="fa fa-star-o"></i>#}
+{#								</div>#}
+{#								<a href="#"><img src="img/photos/photo-13.jpg"></a>#}
+{#							</div>#}
+{#							<div class="title">#}
+{#								<h2><a href="goliath-post-1.html">Sitat con sectetur lorem ipsum dolor</a></h2>#}
+{#								<p><i class="tag-default">Review</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2013<i class="fa fa-comments"></i>22</span></p>#}
+{#							</div>#}
+{#						</div>#}
+{#						#}
+{#						<div class="post-item" data-overlay="1" data-overlay-excerpt="Lorem ipsum dolor sit amet, consectetu r adipiscing elit. Donec velit mi, venenatis eget lacus luctus, mollis aliquet lorem. Aenean sagittis enim et felis pharetra placerat. Curabitur viverra mauris convallis sapien fermentum congue eget libero interdum." data-overlay-url="goliath-post-1.html">#}
+{#							<div class="image">#}
+{#								<div class="stars">#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star-o"></i>#}
+{#								</div>#}
+{#								<a href="#"><img src="img/photos/photo-11.jpg"></a>#}
+{#							</div>#}
+{#							<div class="title">#}
+{#								<h2><a href="goliath-post-1.html">Vestibulum et dui ac sem euismod mattis</a></h2>#}
+{#								<p><i class="tag-default">Review</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2013<i class="fa fa-comments"></i>22</span></p>#}
+{#							</div>#}
+{#						</div>#}
+{#						#}
+{#						<div class="post-item" data-overlay="1" data-overlay-excerpt="Lorem ipsum dolor sit amet, consectetu r adipiscing elit. Donec velit mi, venenatis eget lacus luctus, mollis aliquet lorem. Aenean sagittis enim et felis pharetra placerat. Curabitur viverra mauris convallis sapien fermentum congue eget libero interdum." data-overlay-url="goliath-post-1.html">#}
+{#							<div class="image">#}
+{#								<div class="stars">#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star-o"></i>#}
+{#									<i class="fa fa-star-o"></i>#}
+{#									<i class="fa fa-star-o"></i>#}
+{#								</div>#}
+{#								<a href="#"><img src="img/photos/photo-14.jpg"></a>#}
+{#							</div>#}
+{#							<div class="title">#}
+{#								<h2><a href="goliath-post-1.html">Lorem ipsum dolor sitat con sectetur lorem</a></h2>#}
+{#								<p><i class="tag-default">Review</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2013<i class="fa fa-comments"></i>22</span></p>#}
+{#							</div>#}
+{#						</div>#}
+{#						#}
+{#						<div class="post-item" data-overlay="1" data-overlay-excerpt="Lorem ipsum dolor sit amet, consectetu r adipiscing elit. Donec velit mi, venenatis eget lacus luctus, mollis aliquet lorem. Aenean sagittis enim et felis pharetra placerat. Curabitur viverra mauris convallis sapien fermentum congue eget libero interdum." data-overlay-url="goliath-post-1.html">#}
+{#							<div class="image">#}
+{#								<div class="stars">#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#									<i class="fa fa-star"></i>#}
+{#								</div>#}
+{#								<a href="#"><img src="img/photos/photo-15.jpg"></a>#}
+{#							</div>#}
+{#							<div class="title">#}
+{#								<h2><a href="goliath-post-1.html">Lorem ipsum dolor sitat con sectetur lorem</a></h2>#}
+{#								<p><i class="tag-default">Review</i><span class="legend-default"><i class="fa fa-clock-o"></i>March 18, 2013<i class="fa fa-comments"></i>22</span></p>#}
+{#							</div>#}
+{#						</div>#}
+{#						#}
+{#					</div>#}
+{#					#}
+{#				</div>#}
+{#				#}
+{#				<!-- Archive -->#}
+{#				<div class="widget-tabs">#}
+{#					<div class="title-default">#}
+{#						<a href="#" class="active">Archives</a>#}
+{#						<a href="#" class="view-all">Go to full archives</a>#}
+{#					</div>#}
+{#					<div class="items archives">#}
+{#						<table class="table">#}
+{#							<tr>#}
+{#								<td><a href="#">November 2013</a>23</td>#}
+{#								<td><a href="#">December 2013</a>194</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="#">January 2014</a>15</td>#}
+{#								<td><a href="#">February 2014</a>45</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="#">March 2014</a>60</td>#}
+{#								<td><a href="#">April 2014</a>65</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="#">May 2014</a>13</td>#}
+{#								<td></td>#}
+{#							</tr>#}
+{#						</table>#}
+{#					</div>#}
+{#				</div>#}
+{#				#}
+{#				<!-- Tags -->#}
+{#				<div class="widget-tabs">#}
+{#					<div class="title-default">#}
+{#						<a href="#" class="active">Tag cloud</a>#}
+{#					</div>#}
+{#					<div class="items tag-cloud">#}
+{#						<a href="#" class="tag-1"><span>travel</span><s>15</s></a>#}
+{#						<a href="#" class="tag-1"><span>running</span><s>20</s></a>#}
+{#						<a href="#" class="tag-1"><span>iphone</span><s>8</s></a>#}
+{#						<a href="#" class="tag-1"><span>fitness</span><s>9</s></a>#}
+{#						<a href="#" class="tag-1"><span>virtual reality</span><s>3</s></a>#}
+{#						<a href="#" class="tag-1"><span>tablet</span><s>30</s></a>#}
+{#						<a href="#" class="tag-1"><span>beach</span><s>16</s></a>#}
+{#						<a href="#" class="tag-1"><span>cycling</span><s>25</s></a>#}
+{#						<a href="#" class="tag-1"><span>hockey</span><s>16</s></a>#}
+{#						<a href="#" class="tag-1"><span>coffee shop</span><s>8</s></a>#}
+{#						<a href="#" class="tag-1"><span>mountains</span><s>19</s></a>#}
+{#						<a href="#" class="show-more-link">Show more</a>#}
+{#					</div>#}
+{#				</div>#}
+
+			</div>
+			
+		</div>
+		
+		<!-- Footer -->
+		<footer class="container footer">
+
+			<div class="widget about">
+				<div class="title-default">
+					<a href="#" class="active">About us</a>
+				</div>
+				<div class="text">
+					<p class="logo"><a href""><img alt="" src=""></a></p>
+					we are a news magazine etc etc
+				</div>
+			</div>
+
+			<div class="widget page-map">
+				<div class="title-default">
+					<a href="#" class="active">Page map</a>
+				</div>
+				<div class="items archives">
+					<table class="table">
+                        {% for cats in cats %}
+						<tr>
+							<td><a href="{{cats.get_absolute_url}}">{{cats.title}}</a></td>
+
+						</tr>
+                        {% endfor %}
+
+					</table>
+				</div>
+			</div>
+
+			<div class="widget tags">
+				<div class="title-default">
+					<a href="#" class="active">Tag cloud</a>
+				</div>
+				<div class="items tag-cloud">
+                       {% for cats in cats %}
+					<a href="{{cats.get_absolute_url}}" class="tag-1"><span>{{cats.title}}</span><s></s></a>
+					                        {% endfor %}
+				</div>
+			</div>
+
+		</footer>
+
+		<!-- Copyright -->
+		<div class="container copyright">
+			<div class="left">
+				&copy; 2016   <a href="#">i254 consultants</a>
+			</div>
+			<div class="right">
+				<ul>
+					<li><a href="#">Contacts us</a></li>
+					<li><a href="#">Shortcodes</a></li>
+					<li><a href="#">Legal</a></li>
+					<li>
+						<a href="#"><i class="fa fa-twitter-square"></i></a>
+						<a href="#"><i class="fa fa-facebook-square"></i></a>
+						<a href="#"><i class="fa fa-youtube-square"></i></a>
+						<a href="#"><i class="fa fa-google-plus-square"></i></a>
+						<a href="#"><i class="fa fa-pinterest-square"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		
+		<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+		
+		<script src="{% static 'js/jquery-1.11.1.js' %}"></script>
+		<script src="{% static 'js/bootstrap.js' %}"></script>
+		<script src="{% static 'js/bootstrap-hover-dropdown.js' %}"></script>
+		<script src="{% static 'js/jquery.particleground.js' %}"></script>
+		<script src="{% static 'js/jquery.cycle2.min.js' %}"></script>
+		<script src="{% static 'js/jquery.cycle2.scrollVert.js' %}"></script>
+		<script src="{% static 'js/jquery.cycle2.swipe.min.js' %}"></script>
+		<script src="{% static 'js/jquery.hoverintent.min.js' %}"></script>
+		<script src="{% static 'js/jquery.inview.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.core.min.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.effect.min.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.effect-size.min.js' %}"></script>
+		<script src="{% static 'js/jquery.ui.effect-slide.min.js' %}"></script>
+		<script src="{% static 'js/goliath.js' %}"></script>
+		<script src="{% static 'demo/colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+		<script src="{% static 'js/demo.js' %}"></script>
+	</body>
+</html>
